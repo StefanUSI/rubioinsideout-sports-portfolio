@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Anton", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-neon: #000000;
+  --color-brutal-black: #000000;
+  --color-gallery-white: #FFFFFF;
+}
+
+@layer base {
+  body {
+    @apply bg-gallery-white text-brutal-black font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px black;
+    color: transparent;
+  }
+  
+  .brutal-shadow {
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  }
+  
+  .brutal-shadow-hover:hover {
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+    transform: translate(-2px, -2px);
+  }
+}
+
+/* Marquee animation removed - handled by Framer Motion in Home.tsx */
