@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <rect width="1200" height="600" fill="#111" />
+  <path d="M50 300 Q150 220 250 260 T350 280 Q450 260 550 280 T650 300 Q750 320 850 300 T950 280 Q1050 260 1150 280" fill="none" stroke="#6C757D" stroke-width="6" />
+  <circle cx="520" cy="200" r="7" fill="#6C757D" /><circle cx="645" cy="220" r="7" fill="#6C757D" />
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="#6C757D" font-family="sans-serif" font-size="48">World Map (placeholder)</text>
+</svg>

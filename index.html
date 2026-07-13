@@ -3,9 +3,66 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rubioinsideout</title>
+
+    <!-- Primary Meta Tags -->
+    <title>rubioinsideout | Adventure sports portfolio</title>
+    <meta name="title" content="rubioinsideout | Adventure sports portfolio" />
+    <meta name="description" content="Stefan Rubio's action-sports portfolio spanning skateboarding, skiing, highlining, freediving, and urban flow art." />
+    <meta name="author" content="Stefan Rubio" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rubioinsideout.ch/" />
+    <meta property="og:title" content="rubioinsideout | Adventure sports portfolio" />
+    <meta property="og:description" content="Stefan Rubio's action-sports portfolio spanning skateboarding, skiing, highlining, freediving, and urban flow art." />
+    <meta property="og:image" content="https://rubioinsideout.ch/images/hero/highlining/hero_highlining.jpg" />
+    <meta property="og:site_name" content="rubioinsideout" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="de_CH" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="rubioinsideout | Adventure sports portfolio" />
+    <meta name="twitter:description" content="Stefan Rubio's action-sports portfolio spanning skateboarding, skiing, highlining, freediving, and urban flow art." />
+    <meta name="twitter:image" content="https://rubioinsideout.ch/images/hero/highlining/hero_highlining.jpg" />
+
+    <!-- Canonical + hreflang -->
+    <link rel="canonical" href="https://rubioinsideout.ch/" />
+    <link rel="alternate" hreflang="en" href="https://rubioinsideout.ch/" />
+    <link rel="alternate" hreflang="de" href="https://rubioinsideout.ch/" />
+    <link rel="alternate" hreflang="x-default" href="https://rubioinsideout.ch/" />
+
+    <!-- Performance: preconnect to font CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Fonts — loaded async (media="print" swap trick) so the stylesheet
+         never blocks first paint; display=swap avoids invisible text. -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" />
+    </noscript>
+
+    <!-- Web App Manifest + Icons -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
+    <!-- Hidden form for Netlify build-time detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="from_name" />
+      <input type="email" name="from_email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

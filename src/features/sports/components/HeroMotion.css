@@ -1,0 +1,301 @@
+/* HeroMotion.css - centralized sports hero & ambient animations */
+/*
+  Keyframes & utility classes used across subpages:
+  - Calisthenics:    scanline, pulse-strength → .anim-scan, .anim-strength
+  - Flowarts:        trail-orbit, glow-purple → .anim-orbit, .anim-orbit-reverse, .anim-glow-purple
+  - Freediving:      float, bubble, bubble-float, wave-slow → .anim-float, .anim-float-delay, .anim-bubble(-2/-3/-4), .anim-bubble-float, .anim-wave
+  - Highlining:      hero-cloud-motion → .hero-cloud-motion
+  - IceSkating:      shimmer, frost, ice-reflect → .anim-shimmer, .anim-frost, .ice-reflect-line
+  - InlineSkating:   scanline (shared), glitched → .anim-scanline, .anim-glitch, .street-gradient
+  - Mountaineering:  drift-haze → .haze-cloud
+  - Pumpfoiling:     hero-wave-motion, lift-motion, ripple, wave-undulate → .hero-wave-motion, .anim-lift, .anim-ripple, .anim-wave-undulate
+  - Skiing:          snow-fall, wind-streak → .anim-snow, .anim-wind, .wind-line
+  - Snowboarding:    drift → .snow-particle, .alpine-gradient
+  - Surfskating:     pavement-flow, sun-glow → .anim-flow, .anim-sun
+  - ViaFerrata:      sun-glare-pulse, glare-rotate → .sun-glare, .mountain-gradient
+  - Weightlifting:   shake, glow-red → .anim-shake, .anim-glow
+  - Shared:          fadeIn, vibrate, pulse-slow, rain-fall → .rain-drop
+*/
+
+:root {
+  --hero-wave-duration: 6s;
+  --hero-wave-amplitude: 12px;
+  --ripple-duration: 4s;
+  --rain-duration-min: 1.7s;
+  --rain-duration-max: 3.5s;
+}
+
+/* Water lift-like motion for Pumpfoiling ambient objects */
+@keyframes lift-motion {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { opacity: 0.1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes wave-undulate {
+  0% { transform: translateY(0) scaleY(1); }
+  25% { transform: translateY(-2px) scaleY(0.99); }
+  50% { transform: translateY(-4px) scaleY(1.01); }
+  75% { transform: translateY(-2px) scaleY(0.99); }
+  100% { transform: translateY(0) scaleY(1); }
+}
+
+@keyframes hero-wave-motion {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(-1 * var(--hero-wave-amplitude))); }
+}
+
+@keyframes hero-cloud-motion {
+  /* Used in Highlining for slow vertical system motion (cloud/hero frame) */
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(calc(-1 * var(--hero-wave-amplitude))); }
+}
+
+@keyframes vibrate {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-0.5px); }
+  75% { transform: translateY(0.5px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.1; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.05); }
+}
+
+@keyframes rain-fall {
+  0% { transform: translateY(-20vh) translateX(0); opacity: 0; }
+  20% { opacity: 0.7; }
+  100% { transform: translateY(110vh) translateX(10px); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.2; }
+}
+
+/* ViaFerrata sun glare pulse animation */
+@keyframes sun-glare-pulse {
+  0%, 100% { opacity: 0.01; }
+  50% { opacity: 0.04; }
+}
+
+@keyframes glare-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.sun-glare {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle at center, rgba(255, 200, 100, 0.06) 0%, rgba(255, 150, 50, 0.03) 35%, rgba(255, 100, 0, 0.01) 65%, transparent 100%);
+  border-radius: 50%;
+  animation: glare-rotate 120s linear infinite;
+  pointer-events: none;
+  filter: blur(50px);
+  z-index: 5;
+}
+
+.mountain-gradient {
+  background: linear-gradient(to bottom, transparent 0%, transparent 55%, rgba(117,104,50,0.5) 75%, rgba(117,104,50,1) 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40rem;
+  pointer-events: none;
+}
+
+.anim-lift { animation: lift-motion 5s ease-in-out infinite; }
+.anim-ripple { animation: ripple var(--ripple-duration) ease-in-out infinite; }
+.anim-wave-undulate { animation: wave-undulate 4s ease-in-out infinite; }
+.hero-wave-motion { animation: hero-wave-motion var(--hero-wave-duration) ease-in-out infinite; }
+.hero-cloud-motion { animation: hero-cloud-motion var(--hero-wave-duration) ease-in-out infinite; }
+.rain-drop {
+  position: absolute;
+  width: 3px;
+  background: radial-gradient(ellipse at 50% 30%, rgba(170,210,245,0.9), rgba(170,210,245,0.2));
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  filter: blur(0.3px);
+  pointer-events: none;
+}
+
+/* ─── Calisthenics & InlineSkating: scanline ─── */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* ─── Calisthenics: pulse-strength ─── */
+@keyframes pulse-strength {
+  0%, 100% { border-color: rgba(251, 133, 0, 0.2); box-shadow: 0 0 0 rgba(251, 133, 0, 0); }
+  50% { border-color: rgba(251, 133, 0, 0.6); box-shadow: 0 0 20px rgba(251, 133, 0, 0.1); }
+}
+.anim-scan { animation: scanline 8s linear infinite; }
+.anim-strength { animation: pulse-strength 3s ease-in-out infinite; }
+
+/* ─── Flowarts: trail-orbit, glow-purple ─── */
+@keyframes trail-orbit {
+  0% { transform: rotate(0deg) translateX(150px) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.8; }
+  100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); opacity: 0; }
+}
+@keyframes glow-purple {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(155, 93, 229, 0.4)); }
+  50% { filter: drop-shadow(0 0 20px rgba(155, 93, 229, 0.8)); }
+}
+.anim-orbit { animation: trail-orbit 10s linear infinite; }
+.anim-orbit-reverse { animation: trail-orbit 12s linear infinite reverse; }
+.anim-glow-purple { animation: glow-purple 3s ease-in-out infinite; }
+
+/* ─── Freediving: float, bubble, bubble-float, wave-slow ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.15; }
+  50% { transform: translateY(-30px) scale(1.08); opacity: 0.25; }
+}
+@keyframes bubble {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-150vh) scale(0.2) translateX(var(--tx)); opacity: 0; }
+}
+@keyframes bubble-float {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(10px) translateY(-10px); }
+}
+@keyframes wave-slow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.anim-float { animation: float 6s ease-in-out infinite; }
+.anim-float-delay { animation: float 8s ease-in-out 2s infinite; }
+.anim-bubble { animation: bubble 14s ease-in infinite; }
+.anim-bubble-2 { animation: bubble 18s ease-in 2s infinite; }
+.anim-bubble-3 { animation: bubble 12s ease-in 4s infinite; }
+.anim-bubble-4 { animation: bubble 16s ease-in 1s infinite; }
+.anim-bubble-float { animation: bubble-float 4s ease-in-out infinite; }
+.anim-wave { animation: wave-slow 18s linear infinite; }
+
+/* ─── IceSkating: shimmer, frost, ice-reflect ─── */
+@keyframes shimmer {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+@keyframes frost {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+}
+@keyframes ice-reflect {
+  0%, 100% { opacity: 0.02; transform: translateY(0) translateX(0); filter: blur(2px); }
+  50% { opacity: 0.08; transform: translateY(2px) translateX(1px); filter: blur(1px); }
+}
+.anim-shimmer { animation: shimmer 3s infinite linear; }
+.anim-frost { animation: frost 5s ease-in-out infinite; }
+.ice-reflect-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(144, 219, 244, 0.4), transparent);
+  animation: ice-reflect 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ─── InlineSkating: glitched, street-gradient ─── */
+@keyframes glitched {
+  0% { clip: rect(44px, 450px, 56px, 0); }
+  5% { clip: rect(62px, 450px, 76px, 0); }
+  10% { clip: rect(34px, 450px, 42px, 0); }
+  15% { clip: rect(44px, 450px, 56px, 0); }
+}
+.anim-scanline { animation: scanline 8s linear infinite; }
+.anim-glitch { animation: glitched 4s linear infinite; }
+.street-gradient {
+  background: linear-gradient(to bottom, transparent 0%, transparent 55%, rgba(28,25,23,0.5) 75%, rgba(28,25,23,1) 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40rem;
+  pointer-events: none;
+}
+
+/* ─── Mountaineering: drift-haze, haze-cloud ─── */
+@keyframes drift-haze {
+  0% { transform: translateX(-10%) translateY(0); opacity: 0.1; }
+  50% { transform: translateX(10%) translateY(-10px); opacity: 0.3; }
+  100% { transform: translateX(-10%) translateY(0); opacity: 0.1; }
+}
+.haze-cloud {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+/* ─── Skiing: snow-fall, wind-streak ─── */
+@keyframes snow-fall {
+  0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(110vh) translateX(20px); opacity: 0; }
+}
+@keyframes wind-streak {
+  0% { transform: translateX(-100%) skewX(-45deg); opacity: 0; }
+  50% { opacity: 0.1; }
+  100% { transform: translateX(200%) skewX(-45deg); opacity: 0; }
+}
+.anim-snow { animation: snow-fall linear infinite; }
+.anim-wind { animation: wind-streak 2s linear infinite; }
+.wind-line {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+  pointer-events: none;
+}
+
+/* ─── Snowboarding: drift, snow-particle, alpine-gradient ─── */
+@keyframes drift {
+  0% { transform: translateY(-10vh) translateX(-5vw) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translateY(110vh) translateX(5vw) rotate(360deg); opacity: 0; }
+}
+.snow-particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(1px);
+}
+.alpine-gradient {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 70%, rgba(0,0,0,1) 100%);
+}
+
+/* ─── Surfskating: pavement-flow, sun-glow ─── */
+@keyframes pavement-flow {
+  0%, 100% { transform: translateX(0) skewX(0deg); opacity: 0.08; }
+  50% { transform: translateX(16px) skewX(-6deg); opacity: 0.16; }
+}
+@keyframes sun-glow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.08); }
+}
+.anim-flow { animation: pavement-flow 6s ease-in-out infinite; }
+.anim-sun { animation: sun-glow 8s ease-in-out infinite; }
+
+/* ─── Weightlifting: shake, glow-red ─── */
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  10%, 30%, 50%, 70%, 90% { transform: translate(-2px, -2px); }
+  20%, 40%, 60%, 80% { transform: translate(2px, 2px); }
+}
+@keyframes glow-red {
+  0%, 100% { box-shadow: 0 0 5px rgba(230, 57, 70, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(230, 57, 70, 0.5); }
+}
+.anim-shake { animation: shake 0.5s ease-in-out infinite; }
+.anim-glow { animation: glow-red 2s infinite; }

@@ -1,0 +1,16 @@
+{
+  "name": "rubioinsideout",
+  "short_name": "rubioinsideout",
+  "description": "Stefan Rubio's action-sports portfolio spanning skiing, highlining, freediving, and urban flow art.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}
