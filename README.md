@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
@@ -45,3 +46,6 @@ All MP4 files in `public/videos/home_carousel/` are used exclusively as short-lo
 - `home_aggr.mp4`
 
 Playback is randomized with no repeats until all videos have played once (via `videoOrder` and `orderIdx`).
+=======
+# rubioinsideout-sports-portfolio
+>>>>>>> 39f31631f3fb3329f751de65f25cc1e6508dfb4d
